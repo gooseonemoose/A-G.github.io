@@ -15,19 +15,20 @@
         /* ---------------------------------------------------- */
         :root {
             /* Colores Base (OKLCH) */
-            --background: oklch(100% 0.00011 271.152); 
-            --foreground: oklch(0.2000 0 0); 
-            --card: #5e503fb6;
-            --card-foreground: oklch(0.2000 0 0);
-            --primary: #c6ac8fc2; /* Color de acento principal: Azul Marino Intenso */
-            --primary-foreground: oklch(1.0000 0 0); 
-            --secondary: #7A7854;
-            --secondary-foreground: oklch(0.3867 0 0);
-            --muted: oklch(0.9791 0 0);
-            --muted-foreground: oklch(0.5103 0 0); 
-            --border: oklch(0.85 0 0); 
-            --input: oklch(0.9791 0 0);
-            --ring: oklch(0.39 0.07 260); 
+            --background: #fdfbf7; 
+            --foreground: #2e2e2e; 
+            --card: #ffffff;
+            --card-foreground: #2e2e2e;
+            --primary: #e1d5b8cc; /* Color de acento principal: Azul Marino Intenso */
+            --primary-foreground: #3a3a3a; 
+            --secondary: #f0f0e8;
+            --secondary-foreground: #4a4a4a;
+            --muted: #f8f8f0;
+            --muted-foreground: #6d6d6d; 
+            --border: #E1D5B8; 
+            --input: #f8f8f0;
+            --ring: #e1d5b8; 
+            --hero-border: #E1D5B8;
 
             /* Tipografía */
             --font-sans: "Inter", sans-serif; 
@@ -120,7 +121,7 @@
             /*NUEVO: Aplicar imagen y fijarla al cuerpo */
             background-image: 
                 /* 1. Capa de color negro con 30% de transparencia (0.3) */
-                linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), 
+                linear-gradient(rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 0.10)), 
                 /* 2. La imagen de fondo */
                 url('assets/hero_image.jpg');background-attachment: fixed;
             background-size: cover; /*  CAMBIADO a 'contain' para ver la foto entera */
@@ -156,7 +157,7 @@
         .ampersand-accent {
             font-family: var(--font-serif); 
             font-style: italic;
-            color: var(--primary);
+            color: var(--primary-foreground);
             font-size: 3.5rem;
             line-height: 1;
             font-weight: 400;
@@ -164,7 +165,7 @@
 
         .btn-outline {
             background-color: transparent;
-            color: var(--primary);
+            /* color: var(--primary); */
             border: 2px solid var(--primary);
             padding: 0.75rem 2rem;
             transition: all 0.3s ease;
@@ -176,7 +177,7 @@
         }
         .btn-outline:hover {
             background-color: var(--primary);
-            color: var(--primary-foreground);
+            /* color: var(--primary-foreground); */
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
@@ -240,10 +241,10 @@
             
             // CRONOGRAMA
             schedule: [
-                { time: "12:00 HRS", title: "Ceremonia Religiosa", location: "Santuario de Loiola, Azpeitia", imageUrl: "assets/foto1.jpg"},
-                { time: "14:00 HRS", title: "Cóctel de Bienvenida", location: "Jardines de la Finca El Enclave", imageUrl: "assets/foto2.jpg" },
-                { time: "15:30 HRS", title: "Banquete y Celebración", location: "Salón Principal", imageUrl: "assets/foto3.jpg" },
-                { time: "18:00 HRS", title: "Música y Baile", location: "¡Hasta que el cuerpo aguante!", imageUrl: "assets/foto4.jpg" }
+                { time: "12:00 HRS", title: "Ceremonia Religiosa", location: "Santuario de Loiola, Azpeitia"},
+                { time: "14:00 HRS", title: "Cóctel de Bienvenida", location: "Jardines de la Finca El Enclave"},
+                { time: "15:30 HRS", title: "Banquete y Celebración", location: "Salón Principal"},
+                { time: "18:00 HRS", title: "Música y Baile", location: "¡Hasta que el cuerpo aguante!"}
             ],
 
             // DETALLES CLAVE
@@ -251,7 +252,7 @@
                 id1: {
                     title: "Ceremonia",
                     name: "Santuario de Loiola",
-                    address: "Loiola, Azpeitia",
+                    address: "Azpeitia",
                     imageUrl: "assets/loiola.jpg",
                     mapUrl: "https://maps.app.goo.gl/CgwuXEyyYnUqKoVb6",
                     contentClasses: "bg-white shadow-xl rounded-xl"
@@ -277,25 +278,18 @@
             document.getElementById('hero-date-full').textContent = weddingConfig.dateFull;
             // document.getElementById('hero-image').style.backgroundImage = `url('${weddingConfig.heroImageUrl}')`;
 
-            // Renderizar Enlaces de Navegación
-                //         const navContainer = document.getElementById('nav-links-container');
-                // if (navContainer) {
-                //     navContainer.innerHTML = navLinks.map(link => `
-                //         <a href="${link.href}" class="text-gray-900 hover:text-primary transition-colors py-2 px-4 rounded.md">${link.text}</a>
-                //     `).join('');
-                // }
-            // 1. Renderizar Enlaces de Navegación
+          // 1. Renderizar Enlaces de Navegación
             const navContainer = document.getElementById('nav-links-container'); // Contenedor Escritorio
             const navContainerMobile = document.getElementById('mobile-links-container'); // Contenedor Móvil
 
             // 🌟 CREACIÓN DE navLinksHTML (ESCRITORIO) 🌟
             const navLinksHTML = navLinks.map(link => `
-                <a href="${link.href}" class="text-gray-900 hover:text-primary transition-colors py-2 px-4 rounded.md">${link.text}</a>
+                <a href="${link.href}" class="text-gray-900 hover:text-primary transition-colors py-2 px-4 font-sans-text-sm font-mobile rounded.md">${link.text}</a>
             `).join('');
 
             // 🌟 CREACIÓN DE mobileLinksHTML (MÓVIL) 🌟
             const mobileLinksHTML = navLinks.map(link => `
-                <a href="${link.href}" class="block text-gray-900 hover:text-primary transition-colors py-2 px-4 rounded.md text-center" onclick="document.getElementById('mobile-menu').classList.add('hidden')">${link.text}</a>
+                <a href="${link.href}" class="block text-gray-900 hover:text-primary transition-colors py-2 pl-4 pr-0 mr-2 rounded.md font-sans text-lg font-normal w-auto ml-auto text-right" onclick="document.getElementById('mobile-menu').classList.add('hidden')">${link.text}</a>
             `).join('');
 
 
@@ -526,7 +520,7 @@ if (scheduleContainer) {
             </script>
                     
         <!-- Navbar/Menú (Fijo) -->
-                <<nav class="bg-white shadow-sm fixed w-full z-50 top-0 border-b border-border">
+                <nav class="bg-white shadow-sm fixed w-full z-50 top-0 border-b border-border">
     <div class="max-w-6xl mx-auto px-4">
         <div class="flex justify-between items-center h-16">
             <div class="flex-shrink-0">
@@ -536,7 +530,7 @@ if (scheduleContainer) {
             <div id="nav-links-container" class=" hidden sm:flex space-x-6 text-sm font-sans font-normal">
                 </div>
             
-            <a href="#rsvp" class="btn-primary hidden md:inline-flex items-center text-sm py-2 px-4 rounded-md bg-primary text-primary-foreground hover:opacity-90 transition-opacity">Confirmar Asistencia</a>
+            <a href="#rsvp" class="btn-primary hidden md:inline-flex items-center font-sans text-sm font-medium py-2 px-4 rounded-md bg-primary text-primary-foreground hover:opacity-90 transition-opacity">Confirmar Asistencia</a>
 
             <button id="menu-button" class="md:hidden p-2 rounded-md text-gray-700 hover:text-primary hover:bg-gray-100 transition duration-150">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
@@ -545,8 +539,8 @@ if (scheduleContainer) {
     </div>
     
     <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-border shadow-lg">
-        <div id="mobile-links-container" class="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col items-center">
-            <a href="#rsvp" class="w-full text-center btn-primary text-sm py-2 rounded-md bg-primary text-primary-foreground hover:opacity-90 transition-opacity mt-2">Confirmar Asistencia</a>
+        <div id="mobile-links-container" class="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col items-end">
+            <a href="#rsvp" class="ml-auto w-auto text-end btn-primary font-sans text-lg font-medium pr-0 mr-2 py-2 rounded-md bg-primary text-primary-foreground hover:opacity-90 transition-opacity mt-2">Confirmar Asistencia</a>
         </div>
     </div>
 </nav>
@@ -567,151 +561,180 @@ if (scheduleContainer) {
             <!-- <div id="hero-image"
                  class="absolute inset-0 bg-cover bg-center opacity-70 z-10" 
                  style="filter: grayscale(10%) contrast(110%);"> -->
-            </div> 
+            <!-- </div>  -->
             
             <!-- Capa de Oscurecimiento/Sombra (z-index 20) -->
             <div class="absolute inset-0 bg-background/0 z-20"></div> 
 
             <!-- Contenido del Hero (z-index 30) -->
-            <div class="relative z-30 p-8 max-w-2xl mx-auto bg-card hero-card rounded-md border border-border/50">
+            <div class="relative z-30 p-8 max-w-2xl mx-auto bg-card hero-card rounded-md border border-[var(--hero-border)] ">
                 <!-- NOTA DE LAYOUT: Puedes añadir un margen superior (mt-10) aquí para mover el texto hacia abajo dentro del cuadro blanco -->
-                <p class="font-sans text-sm tracking-widest uppercase mb-4 text-foreground/70">Nos Casamos</p>
+                <!-- <p class="font-sans text-sm tracking-widest uppercase mb-4 text-foreground/70">EZKONTZEN GARA</p> -->
                 <h1 id="hero-bride-name" class="h1-title text-foreground"></h1>
                 <p class="ampersand-accent my-4">&</p>
                 <h1 id="hero-groom-name" class="h1-title text-foreground"></h1>
                 <div class="accent-line my-8"></div>
                 <p id="hero-date-full" class="font-sans text-xl font-light text-foreground/80 tracking-wide mb-6"></p>
-                <a href="#rsvp" class="btn-outline inline-block ">Confirmar Asistencia</a>
+                <!-- <a href="#rsvp" class="text-foreground btn-outline inline-block ">Confirmar Asistencia</a> -->
             </div>
         </section>
 
         <!-- El resto de las secciones flotarán por encima de la imagen fija -->
         <div class="relative z-40 bg-background">
 
-            <!-- 2. Cronograma del Evento -->
-            <!-- NOTA DE LAYOUT: La clase py-32 controla el espacio vertical (arriba y abajo) de esta sección. -->
+<!-- 2. Cronograma del Evento -->
             <section id="schedule" class="bg-card bg-white py-20 md:py-32 border-t border-border/50">
-    <div class="w-full max-w-6xl mx-auto px-6"> 
-        <h2 class="h2-title text-foreground text-center mb-2">EL CRONOGRAMA</h2>
-        <p class="font-sans text-sm text-center tracking-widest text-muted-foreground/70 mb-12">Detalles del Gran Día</p>
-    </div>
-    
-    <div class="timeline-container-v2 relative max-w-6xl mx-auto px-6"> 
-        <div id="schedule-list" class="flex flex-col gap-0 md:gap-0"> 
-        </div>
-    </div>
-</section>
+                <div class="w-full max-w-5xl mx-auto px-6"> 
+                    <h2 class="h2-title text-foreground text-center mb-2">Itinerario</h2>
+                    <p class="font-sans text-sm text-center tracking-widest text-muted-foreground/70 mb-12">Detalles del Gran Día</p>
+                </div>
+                
+                <div class="timeline-container-v2 relative max-w-6xl mx-auto px-6"> 
+                    <div id="schedule-list" class="flex flex-col gap-0 md:gap-0"> 
+                    </div>
+                </div>
+            </section>
             
 
-            <!-- 4. Detalles Importantes -->
+<!-- 3. Detalles Importantes -->
             <section id="details" class="bg-card bg-white py-20 md:py-32 px-6 border-t border-border/50">
-                <h2 class="h2-title text-foreground text-center mb-2">Detalles Clave</h2>
+                <h2 class="h2-title text-foreground text-center mb-2">Detalles</h2>
                 <div class="accent-line"></div>
 
                 <div id="contenedor-tarjetas" class="flex flex-col md:flex-row gap-8 max-w-4xl mx-auto">
-                </div>
+                    </div>
 
                 <div class="max-w-6xl mx-auto mt-20">
-               <h2 class="h2-title text-foreground text-center mb-2">Transporte</h2>
-                            <div class="accent-line"></div>
+                    <h2 class="h2-title text-foreground text-center mb-2">Transporte</h2>
+                    <div class="accent-line"></div>
 
-                    <p class="font-sans text-sm text-center tracking-wide text-muted-foreground/70 mb-10 mt-6 max-w-2xl mx-auto">
-            Hemos organizado autobuses de ida y vuelta para vuestra comodidad desde los puntos clave de la zona. Por favor, revisad los horarios y las paradas a continuación.
-        </p>
+                    <p class="font-sans text-sm text-center tracking-wide text-muted-foreground/70 mb-4 mt-6 max-w-3xl mx-auto">
+                        Estamos organizando un servicio de transporte de autobuses para la comodidad de todos.
+                        Los horarios y los puntos de recogida se definirán más adelante. No obstante, el servicio será el siguiente:
+                    </p>
 
-            </div>
+                    <ul class="font-sans text-sm tracking-wide text-muted-foreground/70 max-w-2xl mx-auto list-disc list-inside space-y-2 text-left md:text-left">
+                        <li>Para la ceremonia, de Donostia al Santuario de Loiola.</li>
+                        <li>Para la celebración, desde el Santuario de Loiola a Salegi.</li>
+                        <li>Para la vuelta (o seguir de fiesta), desde Salegi a Azpeitia y Donostia.</li>
+                    </ul>
+
+                    <p class="font-sans text-sm text-center tracking-wide text-muted-foreground/70 mb-4 mt-6 max-w-3xl mx-auto">
+                        Rogamos que confirmes si harás uso de este servicio en el formulario de asistencia para poder gestionar correctamente las plazas.
+                    </p>
+
+                </div>
             </section>
 
-<!-- 3. Sección de Confirmación de Asistencia (RSVP) -->
+<!-- 4. Sección de Confirmación de Asistencia (RSVP) -->
             <section id="rsvp" class=" py-20 md:py-32 px-6 border-t border-border/50">
-                <div class="max-w-xl mx-auto text-center p-8 border border-border/70 bg-card hero-card rounded-md">
+                <div class="max-w-xl mx-auto text-center p-8 border border-[var(--hero-border)] bg-card hero-card rounded-md">
                     <h2 class="h2-title text-foreground mb-2">Confirma Tu Asistencia</h2>
                     <div class="accent-line"></div>
                     <p class="font-sans text-foreground/80 mb-8">
-                        Por favor, confírmanos tu asistencia antes de la fecha límite.
+                        Estamos deseando celebrar nuestro gran día contigo. Por favor, confirma tu asistencia para que podamos planificar todos los detalles y celebrar juntos.
                     </p>
 
 
-                    <!-- Formulario Sencillo -->
+        <!-- Formulario Sencillo -->
                     <form id="rsvp-form" class="space-y-4 font-sans text-left">
     
-    <div>
-        <label for="nombre_principal" class="block text-sm font-medium text-foreground">1. Nombre y Apellido(s):</label>
-        <input type="text" id="nombre_principal" name="nombre_principal" required 
-            class="mt-1 block w-full border border-border rounded-md p-3 focus:ring-ring focus:border-ring bg-input/50 transition duration-150 shadow-sm">
-    </div>
+                    <div class="pt-2">
+                            <label class="block text-sm font-medium text-foreground mb-2">¿Asistirás a nuestra boda?</label>
+                            <div class="flex items-center space-x-6">
+                                
+                                <div class="flex items-center">
+                                    <input type="radio" id="bus_si" name="bus_uso" value="Si" required
+                                        class="h-4 w-4 text-primary border-border focus:ring-primary/80">
+                                    <label for="bus_si" class="ml-2 block text-sm text-foreground">Sí</label>
+                                </div>
+                                
+                                <div class="flex items-center">
+                                    <input type="radio" id="bus_no" name="bus_uso" value="No" required
+                                        class="h-4 w-4 text-primary border-border focus:ring-primary/80">
+                                    <label for="bus_no" class="ml-2 block text-sm text-foreground">No</label>
+                                </div>
+                                
+                            </div>
+                        </div>
 
-    <div>
-        <label for="nombre_acompanante" class="block text-sm font-medium text-foreground">2. Nombre y Apellido(s) del acompañante:</label>
-        <input type="text" id="nombre_acompanante" name="nombre_acompanante"
-            class="mt-1 block w-full border border-border rounded-md p-3 focus:ring-ring focus:border-ring bg-input/50 transition duration-150 shadow-sm"
-            placeholder="Dejar en blanco si vienes solo/a">
-    </div>
+                        <div>
+                            <label for="nombre_principal" class="block text-sm font-medium text-foreground">Nombre y Apellido(s):</label>
+                            <input type="text" id="nombre_principal" name="nombre_principal" required 
+                                class="mt-1 block w-full border border-border rounded-md p-3 focus:ring-ring focus:border-ring bg-input/50 transition duration-150 shadow-sm">
+                        </div>
 
-    <div>
-        <label for="alergias" class="block text-sm font-medium text-foreground">3. Alergias o Requerimientos Dietéticos:</label>
-        <textarea id="alergias" name="alergias" rows="2" 
-            class="mt-1 block w-full border border-border rounded-md p-3 focus:ring-ring focus:border-ring bg-input/50 transition duration-150 shadow-sm"
-            placeholder="Ej: Vegetariano, alérgico a frutos secos, etc."></textarea>
-    </div>
+                        <div>
+                            <label for="nombre_acompanante" class="block text-sm font-medium text-foreground">Nombre y Apellido(s) del acompañante:</label>
+                            <input type="text" id="nombre_acompanante" name="nombre_acompanante"
+                                class="mt-1 block w-full border border-border rounded-md p-3 focus:ring-ring focus:border-ring bg-input/50 transition duration-150 shadow-sm">
+                        </div>
 
-    <div class="pt-2">
-        <label class="block text-sm font-medium text-foreground mb-2">4. ¿Vas a utilizar el servicio de autobús?</label>
-        <div class="flex items-center space-x-6">
-            
-            <div class="flex items-center">
-                <input type="radio" id="bus_si" name="bus_uso" value="Si" required
-                       class="h-4 w-4 text-primary border-border focus:ring-primary/80">
-                <label for="bus_si" class="ml-2 block text-sm text-foreground">Sí</label>
-            </div>
-            
-            <div class="flex items-center">
-                <input type="radio" id="bus_no" name="bus_uso" value="No" required
-                       class="h-4 w-4 text-primary border-border focus:ring-primary/80">
-                <label for="bus_no" class="ml-2 block text-sm text-foreground">No (Me desplazo por mi cuenta)</label>
-            </div>
-            
-        </div>
-        <p class="text-xs text-muted-foreground mt-2">El horario se definirá más adelante.</p>
-    </div>
+                        <div>
+                            <label for="alergias" class="block text-sm font-medium text-foreground">Alergias o Requerimientos Dietéticos:</label>
+                            <textarea id="alergias" name="alergias" rows="2" 
+                                class="mt-1 block w-full border border-border rounded-md p-3 focus:ring-ring focus:border-ring bg-input/50 transition duration-150 shadow-sm"
+                                placeholder="Ej: Vegetariano, celíaco, alérgico a frutos secos, etc."></textarea>
+                        </div>
 
-    <div class="text-center pt-4">
-        <button type="submit" class="btn-primary w-full md:w-auto rounded-md bg-primary text-primary-foreground hover:opacity-90 transition-opacity p-3 px-6">
-            Enviar Confirmación
-        </button>
-    </div>
-</form>
+                        <div class="pt-2">
+                            <label class="block text-sm font-medium text-foreground mb-2">¿Vas a utilizar el servicio de autobús?</label>
+                            <div class="flex items-center space-x-6">
+                                
+                                <div class="flex items-center">
+                                    <input type="radio" id="bus_si" name="bus_uso" value="Si" required
+                                        class="h-4 w-4 text-primary border-border focus:ring-primary/80">
+                                    <label for="bus_si" class="ml-2 block text-sm text-foreground">Sí</label>
+                                </div>
+                                
+                                <div class="flex items-center">
+                                    <input type="radio" id="bus_no" name="bus_uso" value="No" required
+                                        class="h-4 w-4 text-primary border-border focus:ring-primary/80">
+                                    <label for="bus_no" class="ml-2 block text-sm text-foreground">No</label>
+                                </div>
+                                
+                            </div>
+                            <p class="text-xs text-muted-foreground mt-2">Ver sección de detalles para más información sobre transporte. </p>
+                        </div>
+
+                        <div class="text-center pt-4">
+                            <button type="submit" class="btn-primary btn-outline w-full md:w-auto rounded-md bg-primary text-primary-foreground hover:opacity-90 transition-opacity p-3 px-6">
+                                Enviar Confirmación
+                            </button>
+                        </div>
+                    </form>
 
                     <div id="rsvp-message" class="mt-4 hidden p-3 rounded-md text-sm"></div>
                 </div>
             </section>
 
-            <!-- 5. Footer -->
-    <footer class="bg-card bg-white py-4  px-6 border-t border-border/50">
-    <div class="max-w-6xl mx-auto px-4 text-center">
-        <!-- <p class="font-serif text-3xl text-primary mb-2 italic">Con Amor</p> -->
-        
-        <div class="flex flex-col md:grid md:grid-cols-3 gap-4 text-center">
-            
-            <div class="space-y-0 order-last md:order-none md:text-left">
-                <p class="text-sm text-muted-foreground">
-                    Ane Iglesias<br> 688 627 385
-                </p>
-            </div>
-            
-            <div class="space-y-0 order-first md:order-none">
-                <br> <br> <p id="footer-names-date" class="text-sm font-sans font-light mb-12"></p> 
-            </div>
+<!-- 5. Footer -->
+            <footer class="bg-card bg-white py-4  px-6 border-t border-border/50">
+                <div class="max-w-6xl mx-auto px-4 text-center">
+                    <!-- <p class="font-serif text-3xl text-primary mb-2 italic">Con Amor</p> -->
+                    
+                    <div class="flex flex-col md:grid md:grid-cols-3 gap-4 text-center">
+                        
+                        <div class="space-y-0 order-last md:order-none md:text-left">
+                            <p class="text-sm text-muted-foreground">
+                                Ane Iglesias<br> 688 627 385
+                            </p>
+                        </div>
+                        
+                        <div class="space-y-0 order-first md:order-none">
+                            <br> <br> <p id="footer-names-date" class="text-sm font-sans font-light mb-12"></p> 
+                        </div>
 
-            <div class="space-y-0 order-last md:order-none md:text-right">
-               <p class="text-sm text-muted-foreground">
-                    Gilen Aldalur<br> 629 185 755
-                </p>
-            </div>
-            
-        </div>
-        
-    </div>
-</footer>
+                        <div class="space-y-0 order-last md:order-none md:text-right">
+                        <p class="text-sm text-muted-foreground">
+                                Gilen Aldalur<br> 629 185 755
+                            </p>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            </footer>
+
 </body>
 </html>
