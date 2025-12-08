@@ -459,7 +459,7 @@ if (scheduleContainer) {
                     rsvpMessage.classList.add('hidden'); // Ocultar mensaje anterior
 
                     const nombre = document.getElementById('nombre_principal').value.trim() || '';
-                    const acompanante = parseInt(document.getElementById('nombre_acompanante')?.value, 10) || 0 ;
+                    const acompanante = document.getElementById('nombre_acompanante')?.value.trim() || '' ;
                     const alergias = document.getElementById('alergias')?.value.trim() || '';
 
                     // Implementa esto en tu script para evitar el error 'null' si no hay nada marcado
