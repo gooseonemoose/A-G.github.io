@@ -218,7 +218,8 @@
         // Opciones de navegación. Puedes añadir o quitar elementos aquí.
         const navLinks = [
             { href: "#schedule", text: "Itinerario" },
-            { href: "#details", text: "Detalles" },
+            { href: "#information", text: "Información" },
+            { href: "#transport", text: "Transporte" }
         ];
 
 
@@ -241,9 +242,9 @@
             
             // CRONOGRAMA
             schedule: [
-                { time: "12:00 HRS", title: "Ceremonia Religiosa", location: "Santuario de Loiola, Azpeitia"},
-                { time: "14:00 HRS", title: "Cóctel de Bienvenida", location: "Jardines de la Finca El Enclave"},
-                { time: "15:30 HRS", title: "Banquete y Celebración", location: "Salón Principal"},
+                { time: "12:00 HRS", title: "Ceremonia Religiosa", location: "Santuario de Loiola"},
+                { time: "14:00 HRS", title: "Cóctel de Bienvenida", location: "Jardines de Salegi"},
+                { time: "15:30 HRS", title: "Banquete", location: "Salón Principal"},
                 { time: "18:00 HRS", title: "Música y Baile", location: "¡Hasta que el cuerpo aguante!"}
             ],
 
@@ -546,22 +547,16 @@ if (scheduleContainer) {
 </nav>
 
 
-
+<!-- 
             <main class="bg-background">
             <section class="h-screen w-full pt-16">
-            </section>
+            </section> -->
 
         
         <!-- 1. Sección Principal (Hero) -->
         <!-- NOTA DE LAYOUT: El padding vertical (py-40) controla qué tan abajo está el texto. -->
         <!-- Si quieres el texto más abajo, aumenta el número (ej: py-56). Si lo quieres más arriba, disminúyelo (ej: py-24). -->
-        <section id="hero" class="relative flex items-center justify-center min-h-screen text-center overflow-hidden pt-16 py-40 mt-16"> 
-            
-            <!-- Contenedor de la Imagen Fija (z-index 10) -->
-            <!-- <div id="hero-image"
-                 class="absolute inset-0 bg-cover bg-center opacity-70 z-10" 
-                 style="filter: grayscale(10%) contrast(110%);"> -->
-            <!-- </div>  -->
+        <section id="hero" class="relative flex items-center justify-center min-h-screen text-center overflow-hidden pt-16 py-40">
             
             <!-- Capa de Oscurecimiento/Sombra (z-index 20) -->
             <div class="absolute inset-0 bg-background/0 z-20"></div> 
@@ -583,7 +578,7 @@ if (scheduleContainer) {
         <div class="relative z-40 bg-background">
 
 <!-- 2. Cronograma del Evento -->
-            <section id="schedule" class="bg-card bg-white py-20 md:py-32 border-t border-border/50">
+            <section id="schedule" class="bg-card bg-white py-10 md:py-15  ">
                 <div class="w-full max-w-5xl mx-auto px-6"> 
                     <h2 class="h2-title text-foreground text-center mb-2">Itinerario</h2>
                     <p class="font-sans text-sm text-center tracking-widest text-muted-foreground/70 mb-12">Detalles del Gran Día</p>
@@ -597,18 +592,20 @@ if (scheduleContainer) {
             
 
 <!-- 3. Detalles Importantes -->
-            <section id="details" class="bg-card bg-white py-20 md:py-32 px-6 border-t border-border/50">
-                <h2 class="h2-title text-foreground text-center mb-2">Detalles</h2>
+            <section id="information" class="bg-card bg-white py-10 md:py-15 px-6 ">
+                <h2 class="h2-title text-foreground text-center mb-2">Información</h2>
                 <div class="accent-line"></div>
 
                 <div id="contenedor-tarjetas" class="flex flex-col md:flex-row gap-8 max-w-4xl mx-auto">
                     </div>
+                
+            </section>
+<!-- 4. Transporte -->
+            <section id="transport" class="bg-card bg-white py-10 md:py-15 px-6 ">
+                <h2 class="h2-title text-foreground text-center mb-2">Transporte</h2>
+                <div class="accent-line"></div>
 
-                <div class="max-w-6xl mx-auto mt-20">
-                    <h2 class="h2-title text-foreground text-center mb-2">Transporte</h2>
-                    <div class="accent-line"></div>
-
-                    <p class="font-sans text-sm text-center tracking-wide text-muted-foreground/70 mb-4 mt-6 max-w-3xl mx-auto">
+                    <p class="font-sans text-sm text-justify tracking-wide text-muted-foreground/70 mb-4 mt-6 max-w-3xl mx-auto">
                         Estamos organizando un servicio de transporte de autobuses para la comodidad de todos.
                         Los horarios y los puntos de recogida se definirán más adelante. No obstante, el servicio será el siguiente:
                     </p>
@@ -619,15 +616,16 @@ if (scheduleContainer) {
                         <li>Para la vuelta (o seguir de fiesta), desde Salegi a Azpeitia y Donostia.</li>
                     </ul>
 
-                    <p class="font-sans text-sm text-center tracking-wide text-muted-foreground/70 mb-4 mt-6 max-w-3xl mx-auto">
+                    <p class="font-sans text-sm text-justify tracking-wide text-muted-foreground/70 mb-4 mt-6 max-w-3xl mx-auto">
                         Rogamos que confirmes si harás uso de este servicio en el formulario de asistencia para poder gestionar correctamente las plazas.
                     </p>
 
                 </div>
+
             </section>
 
-<!-- 4. Sección de Confirmación de Asistencia (RSVP) -->
-            <section id="rsvp" class=" py-20 md:py-32 px-6 border-t border-border/50">
+<!-- 5. Sección de Confirmación de Asistencia (RSVP) -->
+            <section id="rsvp" class=" py-20 md:py-32 px-6 ">
                 <div class="max-w-xl mx-auto text-center p-8 border border-[var(--hero-border)] bg-card hero-card rounded-md">
                     <h2 class="h2-title text-foreground mb-2">Confirma Tu Asistencia</h2>
                     <div class="accent-line"></div>
@@ -708,15 +706,21 @@ if (scheduleContainer) {
                 </div>
             </section>
 
-<!-- 5. Footer -->
-            <footer class="bg-card bg-white py-4  px-6 border-t border-border/50">
-                <div class="max-w-6xl mx-auto px-4 text-center">
-                    <!-- <p class="font-serif text-3xl text-primary mb-2 italic">Con Amor</p> -->
+<!-- 6. Footer -->
+            <footer class="bg-card bg-white py-4  px-6 ">
+                <div class="max-w-4xl mx-auto px-4 text-center">
+                   
                     
+                    <p class="font-sans text-sm text-center tracking-wide text-muted-foreground/70 mb-4 mt-6 max-w-4xl mx-auto">
+                        ¡Tu presencia es nuestro mejor regalo! <br>
+                        Pero si aun así quieres hacernos un detalle, estaremos muy agradecidos. <br>
+                        ESXX XXXX XXXX XXXX XXXX
+                    </p>
+
                     <div class="flex flex-col md:grid md:grid-cols-3 gap-4 text-center">
                         
                         <div class="space-y-0 order-last md:order-none md:text-left">
-                            <p class="text-sm text-muted-foreground">
+                            <p class="font-sans text-sm text-muted-foreground">
                                 Ane Iglesias<br> 688 627 385
                             </p>
                         </div>
@@ -726,7 +730,7 @@ if (scheduleContainer) {
                         </div>
 
                         <div class="space-y-0 order-last md:order-none md:text-right">
-                        <p class="text-sm text-muted-foreground">
+                        <p class="font-sans text-sm text-muted-foreground">
                                 Gilen Aldalur<br> 629 185 755
                             </p>
                         </div>
