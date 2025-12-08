@@ -212,7 +212,7 @@
         // ENDPOINT de Formspree.
         // ***************************************************************
         // !!! PASO CRÍTICO: REEMPLAZA ESTA URL con tu ID de formulario real de Formspree !!!
-        const FORMSPREE_ENDPOINT = "https://formspree.io/f/manrdbaa"; 
+        const FORMSPREE_ENDPOINT = "https://formspree.io/f/xyzrddbd"; 
         // ***************************************************************
 
         // Opciones de navegación. Puedes añadir o quitar elementos aquí.
@@ -458,17 +458,23 @@ if (scheduleContainer) {
                     rsvpButton.textContent = 'Enviando...';
                     rsvpMessage.classList.add('hidden'); // Ocultar mensaje anterior
 
-                    const nombre = document.getElementById('nombre').value.trim();
-                    const invitados = parseInt(document.getElementById('invitados').value, 10);
-                    const alergias = document.getElementById('alergias').value.trim();
+                    const nombre = document.getElementById('nombre_principal').value.trim() || '';
+                    const acompanante = parseInt(document.getElementById('nombre_acompanante')?.value, 10) || 0 ;
+                    const alergias = document.getElementById('alergias')?.value.trim() || '';
+
+                    // Implementa esto en tu script para evitar el error 'null' si no hay nada marcado
+                    const asistencia = document.querySelector('input[name="asistencia"]:checked')?.value || 'No ha confirmado asistencia';
+                    const autobus = document.querySelector('input[name="autobus"]:checked')?.value || 'No ha confirmado autobús';
 
                     const rsvpData = {
+                        asistencia: asistencia,
                         nombre: nombre,
-                        invitados: invitados,
+                        acompanante: acompanante,
                         alergias: alergias || 'Ninguna',
+                        autobus: autobus,
                         dateSubmitted: new Date().toISOString(),
                         // Campo especial requerido por Formspree para la dirección de respuesta.
-                        _replyto: 'laura.nicolas.wedding@example.com' 
+                        _replyto: 'galdlaur21@gmail.com' 
                     };
                     
                     // 1. Añadir a la matriz local (solo para demo en consola)
@@ -646,13 +652,13 @@ if (scheduleContainer) {
                             <div class="flex items-center space-x-6">
                                 
                                 <div class="flex items-center">
-                                    <input type="radio" id="asistencia_si" name="asistencia_uso" value="Si" required
+                                    <input type="radio" id="asistencia_si" name="asistencia" value="Si" required
                                         class="h-4 w-4 text-primary border-border focus:ring-primary/80">
                                     <label for="asistencia_si" class="ml-2 block text-sm text-foreground">Sí</label>
                                 </div>
                                 
                                 <div class="flex items-center">
-                                    <input type="radio" id="asistencia_no" name="asistencia_uso" value="No" required
+                                    <input type="radio" id="asistencia_no" name="asistencia" value="No" required
                                         class="h-4 w-4 text-primary border-border focus:ring-primary/80">
                                     <label for="asistencia_no" class="ml-2 block text-sm text-foreground">No</label>
                                 </div>
@@ -684,13 +690,13 @@ if (scheduleContainer) {
                             <div class="flex items-center space-x-6">
                                 
                                 <div class="flex items-center">
-                                    <input type="radio" id="bus_si" name="bus_uso" value="Si" required
+                                    <input type="radio" id="autobus_si" name="autobus" value="Si" required
                                         class="h-4 w-4 text-primary border-border focus:ring-primary/80">
                                     <label for="bus_si" class="ml-2 block text-sm text-foreground">Sí</label>
                                 </div>
                                 
                                 <div class="flex items-center">
-                                    <input type="radio" id="bus_no" name="bus_uso" value="No" required
+                                    <input type="radio" id="autobus_no" name="autobus" value="No" required
                                         class="h-4 w-4 text-primary border-border focus:ring-primary/80">
                                     <label for="bus_no" class="ml-2 block text-sm text-foreground">No</label>
                                 </div>
