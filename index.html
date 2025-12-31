@@ -19,7 +19,7 @@
             --foreground: #2e2e2e; 
             --card: #ffffff;
             --card-foreground: #2e2e2e;
-            --primary: #e1d5b8cc; /* Color de acento principal: Azul Marino Intenso */
+            --primary: lab(84.58% 2.51 24.07 / 0.837); /* Color de acento principal: Azul Marino Intenso */
             --primary-foreground: #3a3a3a; 
             --secondary: #f0f0e8;
             --secondary-foreground: #4a4a4a;
@@ -28,7 +28,7 @@
             --border: #E1D5B8; 
             --input: #f8f8f0;
             --ring: #e1d5b8; 
-            --hero-border: #E1D5B8;
+            --hero-border: #e9d0a6;
 
             /* Tipografía */
             --font-sans: "Inter", sans-serif; 
@@ -121,7 +121,7 @@
             /*NUEVO: Aplicar imagen y fijarla al cuerpo */
             background-image: 
                 /* 1. Capa de color negro con 30% de transparencia (0.3) */
-                linear-gradient(rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 0.10)), 
+                linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)), 
                 /* 2. La imagen de fondo */
                 url('assets/hero_image.jpg');background-attachment: fixed;
             background-size: cover; /*  CAMBIADO a 'contain' para ver la foto entera */
@@ -228,7 +228,7 @@
             // INFO DE LA PAREJA Y FECHA
             brideName: "Ane",
             groomName: "Gilen",
-            dateFull: "Sábado, 18 de Julio de 2026",
+            dateFull: "Sábado, 18 de julio de 2026",
             dateShort: "18.07.2026",
             
             // IMÁGENES: USAR RUTAS RELATIVAS AL DIRECTORIO DEL ARCHIVO INDEX.HTML
@@ -242,10 +242,10 @@
             
             // CRONOGRAMA
             schedule: [
-                { time: "12:00 HRS", title: "Ceremonia Religiosa", location: "Santuario de Loiola"},
-                { time: "14:00 HRS", title: "Cóctel de Bienvenida", location: "Jardines de Salegi"},
-                { time: "15:30 HRS", title: "Banquete", location: "Salón Principal"},
-                { time: "18:00 HRS", title: "Música y Baile", location: "¡Hasta que el cuerpo aguante!"}
+                { time: "12:00h", title: "Ceremonia Religiosa", location: "Santuario de Loiola"},
+                { time: "14:00h", title: "Cóctel de Bienvenida", location: "Jardines de Salegi"},
+                { time: "15:30h", title: "Banquete", location: "Salón Principal"},
+                { time: "18:00h", title: "Música y Baile", location: "¡Hasta que el cuerpo aguante!"}
             ],
 
             // DETALLES CLAVE
@@ -589,9 +589,10 @@ if (scheduleContainer) {
 
 <!-- 2. Cronograma del Evento -->
             <section id="schedule" class="bg-card bg-white py-10 md:py-15  ">
-                <div class="w-full max-w-5xl mx-auto px-6"> 
+                <div class="w-full max-w-4xl mx-auto px-6"> 
                     <h2 class="h2-title text-foreground text-center mb-2">Itinerario</h2>
-                    <p class="font-sans text-sm text-center tracking-widest text-muted-foreground/70 mb-12">Detalles del Gran Día</p>
+                    <div class="accent-line"></div>
+                    <!-- <p class="font-sans text-sm text-center tracking-widest text-muted-foreground/70 mb-12">Detalles del Gran Día</p> -->
                 </div>
                 
                 <div class="timeline-container-v2 relative max-w-6xl mx-auto px-6"> 
@@ -616,7 +617,7 @@ if (scheduleContainer) {
                 <div class="accent-line"></div>
 
                     <p class="font-sans text-sm text-justify tracking-wide text-muted-foreground/70 mb-4 mt-6 max-w-3xl mx-auto">
-                        Estamos organizando un servicio de transporte de autobuses para la comodidad de todos.
+                        Estamos organizando un servicio de autobuses para la comodidad de todos.
                         Los horarios y los puntos de recogida se definirán más adelante. No obstante, el servicio será el siguiente:
                     </p>
 
@@ -638,7 +639,7 @@ if (scheduleContainer) {
             <section id="rsvp" class=" py-20 md:py-32 px-6 ">
                 <div class="max-w-xl mx-auto text-center p-8 border border-[var(--hero-border)] bg-card hero-card rounded-md">
                     <h2 class="h2-title text-foreground mb-2">Confirma Tu Asistencia</h2>
-                    <div class="accent-line"></div>
+                    <!-- <div class="accent-line"></div> -->
                     <p class="font-sans text-foreground/80 mb-8">
                         Estamos deseando celebrar nuestro gran día contigo. Por favor, confirma tu asistencia para que podamos planificar todos los detalles y celebrar juntos.
                     </p>
@@ -702,11 +703,11 @@ if (scheduleContainer) {
                                 </div>
                                 
                             </div>
-                            <p class="text-xs text-muted-foreground mt-2">Ver sección de detalles para más información sobre transporte. </p>
+                            <p class="text-xs text-muted-foreground mt-2">Ver la sección de transporte para más información. </p>
                         </div>
 
                         <div class="text-center pt-4">
-                            <button type="submit" class="btn-primary btn-outline w-full md:w-auto rounded-md bg-primary text-primary-foreground hover:opacity-90 transition-opacity p-3 px-6">
+                            <button type="submit" style="background-color:#e9d0a6eb" class="btn-primary btn-outline w-full md:w-auto rounded-md bg-primary hover:opacity-90 transition-opacity p-3 px-6">
                                 Enviar Confirmación
                             </button>
                         </div>
@@ -721,7 +722,7 @@ if (scheduleContainer) {
     <div class="max-w-4xl mx-auto text-center">
         
         <p class="font-sans text-sm tracking-wide text-muted-foreground/70 mb-10 max-w-4xl mx-auto">
-            ¡Tu presencia es nuestro mejor regalo! <br>
+            ¡Tu presencia es nuestro mayor regalo! <br>
             Pero si aun así quieres hacernos un detalle, estaremos muy agradecidos. <br>
             ESXX XXXX XXXX XXXX XXXX
         </p>
